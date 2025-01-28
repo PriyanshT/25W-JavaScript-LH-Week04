@@ -93,26 +93,35 @@ windSpeed.addEventListener('change', getWindSpeed);
 
 function getWindSpeed() {
     var speed = Number(windSpeed.value);
+    console.log(speed);
     // STEP 5a: Build the SWITCH code block
-
-    // STEP 5b: Build out few cases, followed by a default
-
-    windComment.textContent = speed + 'km/h - Holy schmoly! Hold on to your hat';
-
-    windComment.textContent = speed + 'km/h - It\'s a-howling out there!';
-
-    windComment.textContent = speed + 'km/h - Slightly breezy.';
-
-    windComment.textContent = speed + 'km/h - Still not good.';
-
-    windComment.textContent = speed + 'km/h - Somewhat better!';
-
-    windComment.textContent = speed + 'km/h - Calm as can be.';
-
+    switch (speed) {
+        // STEP 5b: Build out few cases, followed by a default
+        case 100:
+            windComment.textContent = speed + 'km/h - Holy schmoly! Hold on to your hat';
+            break;
+        case 80:
+            windComment.textContent = speed + 'km/h - It\'s a-howling out there!';
+            break;
+        case 60:
+            windComment.textContent = speed + 'km/h - Slightly breezy.';
+            break;
+        case 40:
+            windComment.textContent = speed + 'km/h - Still not good.';
+            break;
+        case 20:
+            windComment.textContent = speed + 'km/h - Somewhat better!';
+            break;
+        default:
+            windComment.textContent = speed + 'km/h - Calm as can be.';
+    }
 } // End of setWeather() function
 
 /* STEP 6: Ternary operator
 This piece of syntax is a bit less typing, but it is harder to read */
 var breakMessage = document.querySelector('#breakTime');
-var coffeeBreak = false;
+var coffeeBreak = true;
+
+coffeeBreak ? breakMessage.textContent = "Yea! Time for coffee." : breakMessage.textContent = "Oh No! I want a coffee";
+
 // This page inspired by and adapted from https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/conditionals
